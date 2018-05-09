@@ -10,9 +10,9 @@ Instructions:
   - Run it and connect to your physical/virtual robot.
   - Download the WebSockets library for Processing from the contributions manager.
   - Run this sketch. You should see a message pop up on the console log of your robot.
-  - Build your own project starting with this bolierplate.
-  - See sample files in this repo for more ellaborate examples.
+  - Build your own project starting with this boilerplate.
+  - See sample files in this repo for more elaborate examples.
 
-Some video tutorials coming soon...
+You can see a video of the sample file working here: https://youtu.be/mP306rshZfY
 
 A project by Jose Luis Garcia del Castillo. More info on https://github.com/RobotExMachina
