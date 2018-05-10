@@ -17,9 +17,9 @@ FloatList traceY = new FloatList();
 
 // Virtual paper data
 // We will be using pixel coordinates as mm coordinates
-float cornerX = 200, 
-      cornerY = 200, 
-      cornerZ = 200;
+float cornerX = 500, 
+      cornerY = 500, 
+      cornerZ = 500;
 
 int travelSpeed = 200, 
   drawingSpeed = 50;
@@ -120,7 +120,8 @@ void homeRobot() {
   bot.Message("Homing Robot");
   bot.PushSettings();
   bot.SpeedTo(400);
-  bot.AxesTo(0, 0, 0, 0, 90, 0);
+  //bot.AxesTo(0, 0, 0, 0, 90, 0);
+  bot.AxesTo(0, -90, -90, -90, 90, 90);
   bot.PopSettings();
 }
 

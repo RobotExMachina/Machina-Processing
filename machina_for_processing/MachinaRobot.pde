@@ -119,7 +119,7 @@ class MachinaRobot {
   }
   
   void ToolCreate(String name, double x, double y, double z, double x0, double x1, double x2, double y0, double y1, double y2, double weight, double cogX, double cogY, double cogZ) {
-    socket.sendMessage("Tool.Create(\"" + name + "\"," + x + "," + y + "," + z + "," + x0 + "," + x1 + "," + x2 + "," + y0 + ","+ y1 + ","+ y2 + "," + "," + weight + "," + cogX + "," + cogY + "," + cogZ + ");");
+    socket.sendMessage("Tool.Create(\"" + name + "\"," + x + "," + y + "," + z + "," + x0 + "," + x1 + "," + x2 + "," + y0 + ","+ y1 + ","+ y2 + "," + weight + "," + cogX + "," + cogY + "," + cogZ + ");");
   }
   
   void Attach(String name) {
