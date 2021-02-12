@@ -5,6 +5,7 @@
   Instructions:
     - Download and execute the Machina Bridge App from https://github.com/RobotExMachina/Machina-Bridge
     - Run it and connect to your physical/virtual robot.
+    - Download the WebSockets library for Processing from the contributions manager.
     - Run this sketch. You should see a message pop up on the console log of your robot.
     - Build your own project starting with this bolierplate. 
     - See sample files in this repo for more ellaborate examples. 

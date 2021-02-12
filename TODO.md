@@ -1,0 +1,2 @@
+- At some point, remove the dependency from the WebSockets library: https://github.com/alexandrainst/processing_websockets
+- 
