@@ -1,27 +1,32 @@
 /*
-  A Processing sketch to draw strokes, and send them to the robot via WebSockets
- 
- Before runnign this sketch, make sure you are running the attached version of the 
- Machina Bridge App in the `bridgeapp` folder.
+  SAMPLE 03: MOTION MIRRORING
+  
+  This sketch allows the user to draw a stroke on the screen,
+  and have the robot mimic that motion on a virtual plane. 
+  
+  Instructions:
+    - Follow the same setup as in Sample 01
+  
+  A project by Jose Luis Garcia del Castillo. More info on https://github.com/RobotExMachina
  */
+
 
 import websockets.*;
 
 WebsocketClient wsc;
 MachinaRobot bot;
+String robotBrand = "ABB";  // replace with "UR" if needed
 
 FloatList traceX = new FloatList();
 FloatList traceY = new FloatList();
 
-
-
 // Virtual paper data
 // We will be using pixel coordinates as mm coordinates
-float cornerX = 500, 
-      cornerY = 500, 
-      cornerZ = 500;
+float cornerX = 300, 
+      cornerY = 300, 
+      cornerZ = 100;
 
-int travelSpeed = 200, 
+int travelSpeed = 100, 
   drawingSpeed = 50;
 
 float approachDistance = 25;
@@ -36,8 +41,9 @@ void setup() {
   stroke(0);
   strokeWeight(3);
 
-  wsc = new WebsocketClient(this, "ws://127.0.0.1:6999/Bridge");
+  wsc = new WebsocketClient(this, "ws://127.0.0.1:6999/Bridge?name=Processing");
   bot = new MachinaRobot(wsc);
+  
   thread("homeRobot");
 }
 
@@ -119,14 +125,19 @@ void robotDrawingRequest() {
 void homeRobot() {
   bot.Message("Homing Robot");
   bot.PushSettings();
-  bot.SpeedTo(400);
-  //bot.AxesTo(0, 0, 0, 0, 90, 0);
-  bot.AxesTo(0, -90, -90, -90, 90, 90);
+  bot.SpeedTo(travelSpeed);
+
+  if (robotBrand == "ABB") {
+    bot.AxesTo(0, 0, 0, 0, 90, 0);
+  } else if (robotBrand == "UR") {
+    bot.AxesTo(0, -90, -90, -90, 90, 90);
+  }
+  
   bot.PopSettings();
 }
 
 
-//This is an event like onMouseClicked. If you chose to use it, it will be executed whenever the server sends a message 
+// This is an event like onMouseClicked. If you chose to use it, it will be executed whenever the server sends a message 
 void webSocketEvent(String msg) {
   println("Message from the server: " + msg);
 }
